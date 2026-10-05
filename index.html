@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Attendance Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">COLLEGE ATTENDANCE</div>
+        <h1>Smart Attendance Tracker</h1>
+        <p>Track every class and lab using your actual weekly timetable.</p>
+      </div>
+      <div class="live">
+        <span class="pulse"></span>
+        <div><small>LOCAL TIME</small><strong id="liveClock">--:--:--</strong></div>
+      </div>
+    </header>
+
+    <section class="stats">
+      <div class="stat"><span>Attendance</span><b id="attendancePct">0%</b><small id="attendanceSub">No classes recorded</small></div>
+      <div class="stat"><span>Present</span><b id="presentCount">0</b><small>periods attended</small></div>
+      <div class="stat"><span>Absent</span><b id="absentCount">0</b><small>periods missed</small></div>
+      <div class="stat"><span>Holidays</span><b id="holidayCount">0</b><small>excluded from percentage</small></div>
+    </section>
+
+    <main class="grid">
+      <section class="card calendar-card">
+        <div class="section-head">
+          <div>
+            <h2>Attendance Calendar</h2>
+            <p>Click a date to record that day's classes.</p>
+          </div>
+          <div class="calendar-nav">
+            <button id="prevMonth" aria-label="Previous month">‹</button>
+            <button id="todayBtn">Today</button>
+            <button id="nextMonth" aria-label="Next month">›</button>
+          </div>
+        </div>
+        <div class="month-title" id="monthTitle"></div>
+        <div class="weekdays">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div class="calendar" id="calendar"></div>
+        <div class="legend">
+          <span><i class="dot present"></i>Present</span>
+          <span><i class="dot absent"></i>Absent</span>
+          <span><i class="dot holiday"></i>Holiday</span>
+          <span><i class="dot mixed"></i>Mixed</span>
+        </div>
+      </section>
+
+      <section class="card day-card">
+        <div class="section-head">
+          <div>
+            <h2 id="selectedDateTitle">Select a date</h2>
+            <p id="selectedDateSub">Choose a date from the calendar.</p>
+          </div>
+          <button class="danger-outline" id="clearDay">Clear day</button>
+        </div>
+        <div id="dayContent"></div>
+      </section>
+    </main>
+
+    <section class="card target-card">
+      <div>
+        <h2>Attendance Target</h2>
+        <p>See what you need to do to reach your target.</p>
+      </div>
+      <div class="target-controls">
+        <label>Target
+          <select id="targetPct">
+            <option>75</option><option selected>80</option><option>85</option><option>90</option>
+          </select>%
+        </label>
+        <div class="target-result" id="targetResult">Record some classes to see your target.</div>
+      </div>
+    </section>
+
+    <section class="card timetable-card">
+      <div class="section-head">
+        <div><h2>Weekly Timetable</h2><p>Classes = 50 min (1 period). Labs = 100 min (2 periods).</p></div>
+        <button class="secondary" id="resetData">Reset all attendance</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Day</th><th>Time</th><th>Subject</th><th>Type</th><th>Periods</th></tr></thead>
+          <tbody id="timetableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
